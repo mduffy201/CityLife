@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Statement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>1</Statement_ID>
+		<Text>text01</Text>
+		<AudioFile>audioone</AudioFile>
+		<Response_ID>1</Response_ID>
+	</Stage>
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>2</Statement_ID>
+		<Text>text02</Text>
+		<AudioFile>audiotwo</AudioFile>
+		<Response_ID>2</Response_ID>
+	</Stage>
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>3</Statement_ID>
+		<Text>text03</Text>
+		<AudioFile>audiothree</AudioFile>
+		<Response_ID>3</Response_ID>
+	</Stage>
+</Statement>
