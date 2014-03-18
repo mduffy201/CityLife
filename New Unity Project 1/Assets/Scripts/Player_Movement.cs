@@ -76,19 +76,16 @@ public class Player_Movement : MonoBehaviour
 				destination_tile = tempTile;
 				
 				//Calculate distance to target
-				//xMoves = destination_tile.x_pos - current_tile.x_pos;
-				//zMoves = destination_tile.z_pos - current_tile.z_pos;	
-				//Debug.Log("MOVES: x = " + xMoves.ToString() + " z = " + zMoves.ToString());
+				xMoves = destination_tile.x_pos - current_tile.x_pos;
+				zMoves = destination_tile.z_pos - current_tile.z_pos;	
+				
 			}
-			int a = 0;
+		
 
 			
 			if (current_tile != destination_tile) {
-				a++;
-				//Debug.Log(a.ToString());
-				//FindPath
-				//Send path to move
-				//List<Vector3> path = FindPath (xMoves, zMoves);
+				
+		
 				StartCoroutine (move (transform, astarPath(destination_tile)));
 				
 			}	
@@ -96,53 +93,9 @@ public class Player_Movement : MonoBehaviour
 		}
 	}
 	
-	//PATH FIND METHOD With mouse input
-	/*private List<Vector3> FindPath (int x_move, int z_move)
-	{
-		//Debug.Log("MOVES IN PATH LOOP: x = " + x_move.ToString() + " z = " + z_move.ToString());
-		List<Vector3> path = new List<Vector3> ();
-
-		int moves_to_complete = Mathf.Abs(x_move) + Mathf.Abs(z_move);
-		Tile pathTile = current_tile;
-		int xm = 0;
-		int zm = 0;
-		
-	//ARRAY FINE
-		
-		//Add path to vector list
-		for (int i = 0; i < moves_to_complete; i++) {
-			if (x_move > 0) {
-				xm++;
-				pathTile = moveRight (pathTile);
-				
-				//Debug.Log("path Tile: " + pathTile.x_pos + "," + pathTile.z_pos + " Centre: " + pathTile.centre.ToString());
-				path.Add (pathTile.centre);
-
-				
-				x_move--;
-			} else if (z_move > 0) {
-				zm++;
-				pathTile = moveUp (pathTile);
-				path.Add (pathTile.centre);
-				z_move--;
-			}
-			else if (x_move < 0) {
-				xm++;
-				pathTile = moveLeft (pathTile);
-				//Debug.Log("path Tile: " + pathTile.x_pos + "," + pathTile.z_pos + " Centre: " + pathTile.centre.ToString());
-				path.Add (pathTile.centre);
-				x_move++;
-			} else if (z_move < 0) {
-				zm++;
-				pathTile = moveDown (pathTile);
-				path.Add (pathTile.centre);
-				z_move++;
-			}
-		}
-		return path;
-	}*/
 	
-	//FROM c# GridMove.cs (http://wiki.unity3d.com/index.php?title=GridMove)
+	
+	
 	public IEnumerator move (Transform transform, List<Vector3> path)
 	{
 		Vector3 startPosition;
@@ -171,40 +124,6 @@ public class Player_Movement : MonoBehaviour
 		isMoving = false;
 		yield return 0;
 	}
-	
-	/*Tile moveUp (Tile pathTile)
-	{
-		//current_tile.z_pos++;
-		//pathTile.z_pos++;
-		pathTile = levelGrid.getTile (pathTile.x_pos, pathTile.z_pos + 1);
-		return pathTile;
-	}
-
-	Tile moveDown (Tile pathTile)
-	{
-		//current_tile.z_pos--;
-		//pathTile.z_pos--;
-		pathTile = levelGrid.getTile (pathTile.x_pos, pathTile.z_pos - 1);
-		return pathTile;
-	}
-
-	Tile moveLeft (Tile pathTile)
-	{
-		//Debug.Log("PT" + pathTile.x_pos.ToString());
-		pathTile = levelGrid.getTile (pathTile.x_pos - 1, pathTile.z_pos);
-//Debug.Log("PT RT " + pathTile.centre.ToString());
-		return pathTile;
-	}
-
-	Tile moveRight (Tile pathTile)
-	{
-	
-		//Debug.Log("PATH TILE AT MR: " + pathTile.x_pos.ToString() + ", " + pathTile.z_pos.ToString());
-		//Debug.Log("PATH TILE AT MR: " + pathTile.x_pos.ToString() + ", " + pathTile.z_pos.ToString());
-		pathTile = levelGrid.getTile (pathTile.x_pos + 1, pathTile.z_pos);
-	
-		return pathTile;
-	}*/
 	
 	public List<Vector3> astarPath(Tile endIn){
 		
