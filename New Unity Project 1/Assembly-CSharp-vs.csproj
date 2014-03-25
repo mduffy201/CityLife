@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_3_5_7;UNITY_3_5;UNITY_EDITOR;ENABLE_PROFILER;UNITY_WEBPLAYER;ENABLE_GENERICS;ENABLE_DUCK_TYPING;ENABLE_TERRAIN;ENABLE_MOVIES;ENABLE_WEBCAM;ENABLE_MICROPHONE;ENABLE_NETWORK;ENABLE_CLOTH;ENABLE_WWW;ENABLE_SUBSTANCE</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_3_5_7;UNITY_3_5;UNITY_EDITOR;ENABLE_PROFILER;UNITY_ANDROID;ENABLE_GENERICS;ENABLE_TERRAIN;ENABLE_WEBCAM;ENABLE_NETWORK;ENABLE_CLOTH;ENABLE_WWW</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Grid.cs" />
      <Compile Include="Assets\Scripts\Level_Logic.cs" />
      <Compile Include="Assets\Scripts\NPC.cs" />
+     <Compile Include="Assets\Scripts\NPC_Interact.cs" />
      <Compile Include="Assets\Scripts\Object_Depth.cs" />
      <Compile Include="Assets\Scripts\Player_Movement.cs" />
      <Compile Include="Assets\Scripts\Response.cs" />
@@ -56,7 +57,10 @@
      <Compile Include="Assets\Scripts\Tile.cs" />
      <Compile Include="Assets\Scripts\XML_Parser.cs" />
      <None Include="Assets\Resources\XML\xml_Statement.xml" />
+     <None Include="Assets\Resources\XML\xml_NPC1.xml" />
      <None Include="Assets\Resources\XML\xml_Response.xml" />
+     <None Include="Assets\Resources\XML\xml_Statement1.xml" />
+     <None Include="Assets\Resources\XML\xml_Response1.xml" />
      <None Include="Assets\Resources\XML\xml_NPC.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

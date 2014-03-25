@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<NPC xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Character>
+		<Level>1</Level>
+		<Name>Smith</Name>
+		<Portrait>Man_Portrait</Portrait>
+		<Image>img1</Image>
+		<Statement_ID>1</Statement_ID>
+		<Position>55</Position>
+	</Character>
+	<Character>
+		<Level>1</Level>
+		<Name>Horse</Name>
+		<Portrait>horse</Portrait>
+		<Image>img2</Image>
+		<Statement_ID>2</Statement_ID>
+		<Position>34</Position>
+	</Character>
+</NPC>

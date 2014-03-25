@@ -115,12 +115,15 @@ public class Grid : MonoBehaviour {
 				iso_array[i,j] = new Tile(i,j,tile_array[i,j].centre.x - tile_array[i,j].centre.z ,(tile_array[i,j].centre.x + tile_array[i,j].centre.z)/2);
 				iso_array[i,j].setCollision(collision_array[i,j]);
 				
-				if(iso_array[i,j].getCollision() == 0){
+				//+++++++++++++++++++++++++++++++++++++++++
+				//DEBUG TILE LIGHTING
+				//+++++++++++++++++++++++++++++++++++++++++
+				/*if(iso_array[i,j].getCollision() == 0){
 					Instantiate(center_point, new Vector3(iso_array[i,j].centre.x , 0.0f,iso_array[i,j].centre.z), Quaternion.identity);
 				}
 				else{
 					Instantiate(center_point_blocked, new Vector3(iso_array[i,j].centre.x , 0.0f,iso_array[i,j].centre.z), Quaternion.identity);
-				}
+				}*/
 			}
 		}
 		

@@ -8,22 +8,30 @@ public class Conversation : MonoBehaviour {
 	//MeshRenderer p_mrender;
 	Renderer p_render;
 	Material portrait;
-	Renderer[] c_renderer;
-	bool display;
+	//Renderer[] c_renderer;
+	
+	public bool display;
 	Level_Logic level_logic;
 	GameObject camera; 
 	//Level_Logic ll = camera.GetComponent(typeof(Level_Logic),"Level_Logic");
-	private GUIText txtStatement;
+/*	private GUIText txtStatement;
 	private GUIText txtRes1;
 	private GUIText txtRes2;
 	private GUIText txtRes3;
-	private GUIText txtRes4;
+	private GUIText txtRes4;*/
 	
-	public string statement = "H";
-	public string response1 = "N";
-	public string response2 = "I";
-	public string response3 = "O";
-	public string response4 = "I";
+	
+	private TextMesh tmStatement;
+	private TextMesh tmRes1;
+	private TextMesh tmRes2;
+	private TextMesh tmRes3;
+	private TextMesh tmRes4;
+	
+	public string statement = "S";
+	public string response1 = "1";
+	public string response2 = "2";
+	public string response3 = "3";
+	public string response4 = "4";
 	
 	// Use this for initialization
 	void Start () {
@@ -37,30 +45,33 @@ public class Conversation : MonoBehaviour {
 		
 		if(conversation_component!= null){
 			//Debug.Log("conversation component found");
-			c_renderer = conversation_component.GetComponentsInChildren<Renderer>();
+		//	c_renderer = conversation_component.GetComponentsInChildren<Renderer>();
+		
 			
-			GUIText[] txtBoxes = conversation_component.GetComponentsInChildren<GUIText>();
-			foreach(GUIText txtBox in txtBoxes){
-				//Debug.Log("BOXES: " + txtBox.name.ToString());
-				if(txtBox.name.ToString() == "NPC_Speach"){
-					txtStatement = txtBox;
+			TextMesh[] tmBoxes = conversation_component.GetComponentsInChildren<TextMesh>();
+			
+			foreach(TextMesh tmBox in tmBoxes){
+				if(tmBox.name == "Statement"){
+					tmStatement = tmBox;
+				
 				}
-				if(txtBox.name.ToString() == "Choice_01"){
-					txtRes1 = txtBox;
+				if(tmBox.name == "Response01"){
+					tmRes1 = tmBox;
+					
 				}
-				if(txtBox.name.ToString() == "Choice_02"){
-					txtRes2 = txtBox;
+				if(tmBox.name == "Response02"){
+					tmRes2 = tmBox;
+					
 				}
-				if(txtBox.name.ToString() == "Choice_03"){
-					txtRes3 = txtBox;
+				if(tmBox.name == "Response03"){
+					tmRes3 = tmBox;
+					
 				}
-				if(txtBox.name.ToString() == "Choice_04"){
-					txtRes4 = txtBox;
+				if(tmBox.name == "Response04"){
+					tmRes4 = tmBox;
+					
 				}
 			}
-			//txtStatement = conversation_component.GetComponent("NPC_Speach").GetComponent<GUIText>();
-			
-			//txtRes1 = conversation_component.GetComponentInChildren<GUIText>();
 		}
 		
 		
@@ -80,9 +91,59 @@ public class Conversation : MonoBehaviour {
 		portrait = (Material)Resources.Load("NPC_Portraits/Materials/" + level_logic.GetCurrentPortrait());
 		
 	}
+	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (1)){
+		
+		if (Input.GetMouseButtonDown (0)){
+			Debug.Log("MOUSE CLICK");
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			RaycastHit hit;
+			
+			//If ray hits plane object
+			if (Physics.Raycast (ray, out hit, Mathf.Infinity)) {
+				
+				/*if(hit.collider.tag == "NPC_CONVO"){
+					Debug.Log("CONVO INIT " + hit.collider.name);
+				}*/
+				
+				
+				//Debug.Log("HIT: " + hit.collider.name.ToString());
+				
+				level_logic.SetNewStatement(hit.collider.name.ToString());
+			}
+		}
+		
+		if(Input.GetKeyDown(KeyCode.Q)){
+			initConversation();
+			p_render.material = portrait;
+			tmStatement.text = statement;
+			tmRes1.text = response1;
+			tmRes2.text = response2;
+			tmRes3.text = response3;
+			tmRes4.text = response4;
+		}
+		
+		/*if(display){
+			//conversation_component.active = true;
+			foreach(Renderer r in c_renderer){		
+				r.enabled=true;
+				}
+		
+			}
+			else{
+			//conversation_component.active = false;
+				foreach(Renderer r in c_renderer){
+					
+					r.enabled=false;
+				
+				}
+				
+			}*/
+		
+		
+		
+		/*if (Input.GetMouseButtonDown (1)){
 			//Debug.Log("CONVERSATION INIT");	
 			
 			if(p_render.enabled == false)
@@ -92,12 +153,12 @@ public class Conversation : MonoBehaviour {
 			else{
 				p_render.enabled = false;
 			}
-		}
-		if(Input.GetKeyDown(KeyCode.A)){
+		}*/
+		/*if(Input.GetKeyDown(KeyCode.A)){
 			//Debug.Log("IMAGE LOAD");
 			p_render.material = portrait;
-		}
-		if(Input.GetKeyDown(KeyCode.B)){
+		}*/
+		/*if(Input.GetKeyDown(KeyCode.B)){
 				
 			if(display){
 				display = false;
@@ -108,45 +169,24 @@ public class Conversation : MonoBehaviour {
 				
 			//Debug.Log("TURN ALL OFF");
 				
-			if(display){
-				foreach(Renderer r in c_renderer){
-					
-					r.enabled=true;
-				}
-			}
-			else{
-				foreach(Renderer r in c_renderer){
-					
-					r.enabled=false;
-				}	
-			}
-		}
-		if(Input.GetKeyDown(KeyCode.Q)){
-			initConversation();
-			p_render.material = portrait;
-			txtStatement.text = statement;
-			txtRes1.text = response1;
-			txtRes2.text = response2;
-			txtRes3.text = response3;
-			txtRes4.text = response4;
-		}
-			if(Input.GetKeyDown(KeyCode.E)){
+		
+		}*/
+			
+	
+		/*if(Input.GetKeyDown(KeyCode.E)){
 			//Debug.Log("CONVERSATION CHECK " + level_logic.GetCurrentStatementText());
-		}
-		if (Input.GetMouseButtonDown (0)){
-			Debug.Log("MOUSE CLICK");
-			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-			RaycastHit hit;
-			
-			//If ray hits plane object
-			if (Physics.Raycast (ray, out hit, Mathf.Infinity)) {
-				
-				Debug.Log("HIT: " + hit.collider.name.ToString());
-				level_logic.SetNewStatement(hit.collider.name.ToString());
-			}
-			
-			
-		}
+		}*/
+
+	}
+	public void intiConvo(){
+		initConversation();
+			p_render.material = portrait;
+			tmStatement.text = statement;
+			tmRes1.text = response1;
+			tmRes2.text = response2;
+			tmRes3.text = response3;
+			tmRes4.text = response4;
+		
 	}
 }
 

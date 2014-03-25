@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Statement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>1</Statement_ID>
+		<Text>Hi, I've lost my wallet, I don’t suppose you've seen it anywhere. </Text>
+		<AudioFile>audioone</AudioFile>
+		<Response_ID>1</Response_ID>
+	</Stage>
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>2</Statement_ID>
+		<Text>I'm sure I had it when I came into the shop.</Text>
+		<AudioFile>audiotwo</AudioFile>
+		<Response_ID>2</Response_ID>
+	</Stage>
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>3</Statement_ID>
+		<Text>It's a brown leather wallet. I really need it to pay for my shopping.</Text>
+		<AudioFile>audiothree</AudioFile>
+		<Response_ID>2</Response_ID>
+	</Stage>
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>4</Statement_ID>
+		<Text>Oh, you found it! Thank you so much, I don’t know what I would have done if you didn't.</Text>
+		<Response_ID>1</Response_ID>
+	</Stage>
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>5</Statement_ID>
+		<Text>You haven't? If you do see it, please come find me right away.</Text>
+		<Response_ID>1</Response_ID>
+	</Stage>
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>6</Statement_ID>
+		<Text>You saw someone pick it up over by the freezer? What did he look like?</Text>
+		<Response_ID>1</Response_ID>
+	</Stage>
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>7</Statement_ID>
+		<Text>If you found it, why didn't you let me know when I asked? Have you taken anything from it?</Text>
+		<Response_ID>2</Response_ID>
+	</Stage>
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>8</Statement_ID>
+		<Text>In future, don’t take what isn't yours!</Text>
+	</Stage>
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>9</Statement_ID>
+		<Text>You lied! That man said he didn't find my wallet. Have you stolen it?</Text>
+	</Stage>
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>10</Statement_ID>
+		<Text>If you find something and don’t hand it in, it's the same as stealing.</Text>
+	</Stage>
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>11</Statement_ID>
+		<Text>I want you to give me my wallet back now.</Text>
+	</Stage>
+	<Stage>
+		<Owner_Name>Smith</Owner_Name>
+		<Statement_ID>12</Statement_ID>
+		<Text>Someone help, this thief has stolen my wallet!</Text>
+	</Stage>
+</Statement>

@@ -6,9 +6,9 @@ using System.Xml;
 public class XML_Parser  {
 	
 	public TextAsset xml;
-	private string npc_xml = "XML/xml_NPC";
-	private string statement_xml = "XML/xml_statement";
-	private string response_xml = "XML/xml_response";
+	private string npc_xml = "XML/xml_NPC1";
+	private string statement_xml = "XML/xml_statement1";
+	private string response_xml = "XML/xml_response1";
 	Response response;
 	// Use this for initialization
 	public XML_Parser(){}
