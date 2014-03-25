@@ -47,14 +47,7 @@ public class Player_Movement : MonoBehaviour
 
 	void Update ()
 	{
-		/*if (Input.GetKeyDown (KeyCode.E)) {
-			if(npc_convo){
-				npc_convo = false;
-			}else{
-				npc_convo = true;
-			}
-			
-		}*/
+		
 		
 		
 		if (Input.GetKeyDown (KeyCode.E)) {
@@ -150,66 +143,9 @@ public class Player_Movement : MonoBehaviour
 				
 					move_to = new Vector3 (hit.point.x, 0, hit.point.z);
 				move(move_to);
-					//Create temp tile
-					/*Tile tempTile = new Tile ();
 					
-					//Check each tile in array
-					foreach (Tile aTile in levelGrid.iso_array) {
-
-						//Calculate distances
-						float distance = Vector3.Distance (move_to, aTile.centre);
-						float tempDistance = Vector3.Distance (tempTile.centre, move_to);
-					
-						//if movex closer to aTile centre than tempTile AND movez closer to aTile centre than tempTile
-						//then save aTile as tempTile
-						if (distance < tempDistance) {
-
-							tempTile = aTile;			
-						}		
-					}
-					
-					//Check closest tile
-					Debug.Log ("Closest Tile: " + "[" + tempTile.x_pos + "," + tempTile.z_pos + "]");
-					destination_tile = tempTile;
-				
-					//Calculate distance to target
-					xMoves = destination_tile.x_pos - current_tile.x_pos;
-					zMoves = destination_tile.z_pos - current_tile.z_pos;*/	
 				}
-		/*
-				//Create temp tile
-					Tile tempTile = new Tile ();
-					
-					//Check each tile in array
-					foreach (Tile aTile in levelGrid.iso_array) {
-
-						//Calculate distances
-						float distance = Vector3.Distance (move_to, aTile.centre);
-						float tempDistance = Vector3.Distance (tempTile.centre, move_to);
-					
-						//if movex closer to aTile centre than tempTile AND movez closer to aTile centre than tempTile
-						//then save aTile as tempTile
-						if (distance < tempDistance) {
-
-							tempTile = aTile;			
-						}		
-					}
-					
-					//Check closest tile
-					Debug.Log ("Closest Tile: " + "[" + tempTile.x_pos + "," + tempTile.z_pos + "]");
-					destination_tile = tempTile;
-				
-					//Calculate distance to target
-					xMoves = destination_tile.x_pos - current_tile.x_pos;
-					zMoves = destination_tile.z_pos - current_tile.z_pos;	
-			
-				if (current_tile != destination_tile) {
-				
 		
-					StartCoroutine (move (transform, astarPath (destination_tile)));
-				
-				}	
-				current_tile = levelGrid.getTile (current_tile.x_pos + xMoves, current_tile.z_pos + zMoves);*/
 			}
 		}
 	}
