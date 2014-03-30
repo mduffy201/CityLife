@@ -13,7 +13,7 @@ public class Player_Movement : MonoBehaviour
 	private float gridSize = 1f;
 	public Vector2 input;
 	private bool isMoving = false;
-	public float character_offset = 0.0f;
+	//public float character_offset = 0.0f;
 	GameObject ground;
 	Grid levelGrid;
 	public int xMoves;
@@ -24,8 +24,8 @@ public class Player_Movement : MonoBehaviour
 	GameObject selected_npc;
 	Conversation convo;
 	
-	GameObject proto_dialog;
-	bool show_proto;
+	//GameObject proto_dialog;
+	//bool show_proto;
 	//public bool npc_convo;
 	
 	void Start ()
@@ -43,8 +43,7 @@ public class Player_Movement : MonoBehaviour
 			r.enabled = false;
 		}	
 		
-		proto_dialog = GameObject.Find("PrototypeD");
-		show_proto = false;
+	
 		
 		ssAnimation = gameObject.GetComponent<Spritesheet_Animation>();
 		ssAnimation.still();
@@ -66,14 +65,10 @@ public class Player_Movement : MonoBehaviour
 	}
 	void Update ()
 	{
-		/*Tile cTile;
-		cTile = levelGrid.getTile(transform);
-		if(cTile != null)
-		Debug.Log("CURRENT TILE: " + cTile.x_pos.ToString() + ", " + cTile.z_pos.ToString() );
-		*/
+		
 		
 		if (Input.GetKeyDown (KeyCode.E)) {
-		//if(npc_convo){
+		
 			if (conversation_component.active) {
 				conversation_component.active = false;
 				
@@ -88,7 +83,7 @@ public class Player_Movement : MonoBehaviour
 				}
 			}
 		}
-		//}
+		
 
 		if (Input.GetMouseButtonDown (0)) {
 	
@@ -101,39 +96,6 @@ public class Player_Movement : MonoBehaviour
 			//If ray hits plane object
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity)) {
 				
-			/*	if (hit.collider.tag == "Reset"){
-					Application.LoadLevel(0);
-				}
-				if (hit.collider.tag == "Proto"){
-					
-					
-					if(!show_proto){
-						show_proto = true;
-						proto_dialog.transform.position = conversation_component.transform.position;
-					}else{
-						show_proto = false;
-						proto_dialog.transform.position = new Vector3(-18.03147f,0.7f,18.87452f);
-					}
-				}
-				else if (hit.collider.tag == "Dialog"){
-					
-					//Display dialog box 
-					if (conversation_component.active) {
-						conversation_component.active = false;
-				
-						foreach (Renderer r in c_renderer) {		
-							r.enabled = false;
-						}
-					} else {
-						
-						conversation_component.active = true;
-						foreach (Renderer r in c_renderer) {		
-						r.enabled = true;
-						}
-						convo.intiConvo();
-					}
-					
-				}*/
 				
 				//If click on npc character with speach
 				if (hit.collider.tag == "NPC_CONVO") {
@@ -151,23 +113,19 @@ public class Player_Movement : MonoBehaviour
 						
 						Debug.Log("MOVE TO TILE: " + npc.current_x.ToString() + ", " + npc.current_z.ToString());
 						Debug.Log("MOVE TO: " + move_to.x.ToString() + ", " + move_to.z.ToString());
-					//	npc_convo = true;
+					
 						move(move_to);
-						//switchConvo();
-						//INIT CONVO WINDOW
+					
+						
 					}
 					
-					
-					
-					
-					
-					
+
 				} else {
 				
 				
 					move_to = new Vector3 (hit.point.x, 0, hit.point.z);
 					move(move_to);
-					//ssAnimation.StopRun();
+					
 				}
 		
 			}
