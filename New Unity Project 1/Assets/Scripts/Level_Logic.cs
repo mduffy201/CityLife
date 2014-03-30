@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Level_Logic : MonoBehaviour {
 	
+	private string currentNPC = "Smith";
+	
 	private XML_Parser xm_p;
 	private NPC current_npc;
 	private int current_level = 1;
@@ -31,17 +33,25 @@ public class Level_Logic : MonoBehaviour {
 		/*foreach( NPC npc in level_npc){
 			Debug.Log("NPC LOOP " + npc.GetName());
 		}*/
-		SetCurrentNPC();
-		SetCurrentStatment();
-		SetCurrentResponses();
+//		SetCurrentNPC();
+		//SetCurrentStatment();
+	//	SetCurrentResponses();
 	}
-	public void SetCurrentNPC(){
+	
+	
+	
+	
+	
+	
+	public void SetCurrentNPC(string npc_name){
 		foreach( NPC npc in level_npc){
-			if(npc.GetName() == current_npc_name){
+			if(npc.GetName() == npc_name){
 				current_npc = npc;
 			} 
 		}
 		
+		SetCurrentStatment();
+		SetCurrentResponses();
 		//Debug.Log("CURRENT NPC: " + current_npc.GetName());
 		
 	}

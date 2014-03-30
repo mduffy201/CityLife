@@ -82,7 +82,9 @@ public class Conversation : MonoBehaviour {
 		p_render.material = null;
 	}
 	
-	public void initConversation(){
+	public void initConversation(string npc_name){
+		
+		
 		statement = level_logic.GetCurrentStatementText();
 	 	response1 = level_logic.GetResponse01();
 	 	response2 = level_logic.GetResponse02();
@@ -114,7 +116,9 @@ public class Conversation : MonoBehaviour {
 			}
 		}
 		
-		if(Input.GetKeyDown(KeyCode.Q)){
+/*		
+ * REFRESH
+ * if(Input.GetKeyDown(KeyCode.Q)){
 			initConversation();
 			p_render.material = portrait;
 			tmStatement.text = statement;
@@ -122,7 +126,7 @@ public class Conversation : MonoBehaviour {
 			tmRes2.text = response2;
 			tmRes3.text = response3;
 			tmRes4.text = response4;
-		}
+		}*/
 		
 		/*if(display){
 			//conversation_component.active = true;
@@ -178,7 +182,7 @@ public class Conversation : MonoBehaviour {
 		}*/
 
 	}
-	public void intiConvo(){
+	/*public void intiConvo(){
 		initConversation();
 			p_render.material = portrait;
 			tmStatement.text = statement;
@@ -187,6 +191,6 @@ public class Conversation : MonoBehaviour {
 			tmRes3.text = response3;
 			tmRes4.text = response4;
 		
-	}
+	}*/
 }
 

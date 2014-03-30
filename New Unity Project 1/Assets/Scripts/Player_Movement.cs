@@ -23,7 +23,7 @@ public class Player_Movement : MonoBehaviour
 	Renderer[] c_renderer;
 	GameObject selected_npc;
 	Conversation convo;
-	
+	public string npc_name;
 	//GameObject proto_dialog;
 	//bool show_proto;
 	//public bool npc_convo;
@@ -61,13 +61,16 @@ public class Player_Movement : MonoBehaviour
 				foreach (Renderer r in c_renderer) {		
 					r.enabled = true;
 				}
+				
+				convo.initConversation(npc_name);
 			}
+		
 	}
 	void Update ()
 	{
 		
 		
-		if (Input.GetKeyDown (KeyCode.E)) {
+	/*	if (Input.GetKeyDown (KeyCode.E)) {
 		
 			if (conversation_component.active) {
 				conversation_component.active = false;
@@ -82,7 +85,7 @@ public class Player_Movement : MonoBehaviour
 					r.enabled = true;
 				}
 			}
-		}
+		}*/
 		
 
 		if (Input.GetMouseButtonDown (0)) {
@@ -103,16 +106,20 @@ public class Player_Movement : MonoBehaviour
 					Debug.Log ("CONVO INIT " + hit.collider.name);
 					Debug.Log ("HIT: " + hit.collider.name.ToString ());
 					
-					selected_npc = GameObject.Find (hit.collider.name.ToString ());
+					selected_npc = hit.collider.gameObject;
+						//GameObject..Find (hit.collider.name.ToString ());
+					
+					
 					
 					if (selected_npc != null) {
 						Debug.Log ("NPC FOUND");
 						
+						
 						NPC_Interact npc = selected_npc.GetComponent<NPC_Interact>();
 						move_to = levelGrid.getTile(npc.current_x-1, npc.current_z).centre;
-						
-						Debug.Log("MOVE TO TILE: " + npc.current_x.ToString() + ", " + npc.current_z.ToString());
-						Debug.Log("MOVE TO: " + move_to.x.ToString() + ", " + move_to.z.ToString());
+						npc_name = npc.name;
+						Debug.Log("NPC NAME: " + npc.name);
+						//Debug.Log("MOVE TO: " + move_to.x.ToString() + ", " + move_to.z.ToString());
 					
 						move(move_to);
 					

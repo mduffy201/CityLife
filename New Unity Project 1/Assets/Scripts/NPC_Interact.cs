@@ -5,6 +5,7 @@ public class NPC_Interact : MonoBehaviour {
 	
 	public int current_x = 18;
 	public int current_z = 15;
+	public string name;
 	// Use this for initialization
 	void Start () {
 	
