@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 public class Player_Movement : MonoBehaviour
 {
-	
+	Spritesheet_Animation ssAnimation;
+	bool bConvo = false;
+	//GameObject ssAnimation;
 	GameObject conversation_component;
 	public Vector3 move_to;
 	private float moveSpeed = 3f;
@@ -43,12 +45,32 @@ public class Player_Movement : MonoBehaviour
 		
 		proto_dialog = GameObject.Find("PrototypeD");
 		show_proto = false;
+		
+		ssAnimation = gameObject.GetComponent<Spritesheet_Animation>();
+		ssAnimation.still();
 	}
-
+	public void switchConvo(){
+			if (conversation_component.active) {
+				conversation_component.active = false;
+				
+				foreach (Renderer r in c_renderer) {		
+					r.enabled = false;
+				}
+			} else {
+				conversation_component.active = true;
+				
+				foreach (Renderer r in c_renderer) {		
+					r.enabled = true;
+				}
+			}
+	}
 	void Update ()
 	{
-		
-		
+		/*Tile cTile;
+		cTile = levelGrid.getTile(transform);
+		if(cTile != null)
+		Debug.Log("CURRENT TILE: " + cTile.x_pos.ToString() + ", " + cTile.z_pos.ToString() );
+		*/
 		
 		if (Input.GetKeyDown (KeyCode.E)) {
 		//if(npc_convo){
@@ -79,7 +101,7 @@ public class Player_Movement : MonoBehaviour
 			//If ray hits plane object
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity)) {
 				
-				if (hit.collider.tag == "Reset"){
+			/*	if (hit.collider.tag == "Reset"){
 					Application.LoadLevel(0);
 				}
 				if (hit.collider.tag == "Proto"){
@@ -111,11 +133,11 @@ public class Player_Movement : MonoBehaviour
 						convo.intiConvo();
 					}
 					
-				}
+				}*/
 				
-				//If click on npc character
-				else if (hit.collider.tag == "NPC_CONVO") {
-					
+				//If click on npc character with speach
+				if (hit.collider.tag == "NPC_CONVO") {
+					bConvo = true;
 					Debug.Log ("CONVO INIT " + hit.collider.name);
 					Debug.Log ("HIT: " + hit.collider.name.ToString ());
 					
@@ -131,6 +153,8 @@ public class Player_Movement : MonoBehaviour
 						Debug.Log("MOVE TO: " + move_to.x.ToString() + ", " + move_to.z.ToString());
 					//	npc_convo = true;
 						move(move_to);
+						//switchConvo();
+						//INIT CONVO WINDOW
 					}
 					
 					
@@ -142,8 +166,8 @@ public class Player_Movement : MonoBehaviour
 				
 				
 					move_to = new Vector3 (hit.point.x, 0, hit.point.z);
-				move(move_to);
-					
+					move(move_to);
+					//ssAnimation.StopRun();
 				}
 		
 			}
@@ -157,7 +181,7 @@ public class Player_Movement : MonoBehaviour
 					
 					//Check each tile in array
 					foreach (Tile aTile in levelGrid.iso_array) {
-
+							
 						//Calculate distances
 						float distance = Vector3.Distance (move_to, aTile.centre);
 						float tempDistance = Vector3.Distance (tempTile.centre, move_to);
@@ -196,7 +220,7 @@ public class Player_Movement : MonoBehaviour
 		isMoving = true;							
 		startPosition = current_tile.centre;			//Current tile position
 		float t = 0;
-
+		ssAnimation.StartRunRight();
 		//for each vector3 in list move to centre
 		foreach (Vector3 v in path) {
 			
@@ -212,7 +236,10 @@ public class Player_Movement : MonoBehaviour
 				yield return null;
 			}
 		}
-			
+		
+		if(bConvo)
+			switchConvo();
+		
 		isMoving = false;
 		yield return 0;
 	}

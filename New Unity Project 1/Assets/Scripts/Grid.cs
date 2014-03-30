@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Grid : MonoBehaviour {
 	
+	public bool DEBUG_Tile_Lights = false;
 	public string name = "LEVEL";
 	public bool grid_on = true;
 	public Vector3 start_point;
@@ -13,9 +14,7 @@ public class Grid : MonoBehaviour {
 	public const int vertical_tiles = 31;	//Number of tiles on z axis
 	public int no_of_tiles;					//Total number of tiles in grid
 	public Vector3 tile_size;				//Size on an individual tile
-	
-//	private Mesh mesh;						//Mesh of ground plane object
-	//public Bounds ground;					//Bound data of plane object
+
 	
 	//public int[,] tiles;					//Array for tile data (Collision)
 	public Tile[,] tile_array;               //Array of tile objects
@@ -118,12 +117,14 @@ public class Grid : MonoBehaviour {
 				//+++++++++++++++++++++++++++++++++++++++++
 				//DEBUG TILE LIGHTING
 				//+++++++++++++++++++++++++++++++++++++++++
-				/*if(iso_array[i,j].getCollision() == 0){
-					Instantiate(center_point, new Vector3(iso_array[i,j].centre.x , 0.0f,iso_array[i,j].centre.z), Quaternion.identity);
+				if(DEBUG_Tile_Lights){
+					if(iso_array[i,j].getCollision() == 0){
+						Instantiate(center_point, new Vector3(iso_array[i,j].centre.x , 0.0f,iso_array[i,j].centre.z), Quaternion.identity);
+					}
+					else{
+						Instantiate(center_point_blocked, new Vector3(iso_array[i,j].centre.x , 0.0f,iso_array[i,j].centre.z), Quaternion.identity);
+					}
 				}
-				else{
-					Instantiate(center_point_blocked, new Vector3(iso_array[i,j].centre.x , 0.0f,iso_array[i,j].centre.z), Quaternion.identity);
-				}*/
 			}
 		}
 		

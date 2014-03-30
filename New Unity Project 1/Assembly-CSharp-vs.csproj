@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Object_Depth.cs" />
      <Compile Include="Assets\Scripts\Player_Movement.cs" />
      <Compile Include="Assets\Scripts\Response.cs" />
+     <Compile Include="Assets\Scripts\Spritesheet_Animation.cs" />
      <Compile Include="Assets\Scripts\Statement.cs" />
      <Compile Include="Assets\Scripts\Tile.cs" />
      <Compile Include="Assets\Scripts\XML_Parser.cs" />
