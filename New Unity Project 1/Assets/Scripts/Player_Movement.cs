@@ -193,7 +193,7 @@ public class Player_Movement : MonoBehaviour
 		float t = 0;
 		//ssAnimation.StartSouth();
 		//for each vector3 in list move to centre
-		int m = 0;
+		//int m = 0;
 		foreach (Vector3 v in path) {
 			
 			//Debug.Log("MOVE LOOP_> " + v.ToString() );
@@ -201,14 +201,14 @@ public class Player_Movement : MonoBehaviour
 			startPosition = transform.position;
 			endPosition = v;  
 			
-			Debug.Log("MOVE_ " + m.ToString());
+			/*Debug.Log("MOVE_ " + m.ToString());
 			Debug.Log("Start - x: " + startPosition.x.ToString() + " z: " + startPosition.z.ToString());
 			Debug.Log("End - x: " + endPosition.x.ToString() + " z: " + endPosition.z.ToString());
 			m++;
 			
 			Debug.Log("CALC 1: " + (endPosition.x - startPosition.x).ToString());
 			Debug.Log("CALC 2: " + (endPosition.z - startPosition.z).ToString());
-			
+			*/
 			//if 1, -1, 0.5, -0.5
 			if ((endPosition.x - startPosition.x) == 1 &&  (endPosition.z - startPosition.z) == 0.5)
 			{

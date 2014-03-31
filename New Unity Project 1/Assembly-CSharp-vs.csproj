@@ -47,6 +47,8 @@
      <Compile Include="Assets\Scripts\Camera_movement.cs" />
      <Compile Include="Assets\Scripts\Conversation.cs" />
      <Compile Include="Assets\Scripts\Grid.cs" />
+     <Compile Include="Assets\Scripts\Inventory.cs" />
+     <Compile Include="Assets\Scripts\Item.cs" />
      <Compile Include="Assets\Scripts\Level_Logic.cs" />
      <Compile Include="Assets\Scripts\NPC.cs" />
      <Compile Include="Assets\Scripts\NPC_Interact.cs" />
