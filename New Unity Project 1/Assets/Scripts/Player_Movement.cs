@@ -13,6 +13,8 @@ public class Player_Movement : MonoBehaviour
 	private float gridSize = 1f;
 	public Vector2 input;
 	private bool isMoving = false;
+	bool isConvo = false;
+	
 	//public float character_offset = 0.0f;
 	GameObject ground;
 	Grid levelGrid;
@@ -96,45 +98,49 @@ public class Player_Movement : MonoBehaviour
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 			
-			//If ray hits plane object
-			if (Physics.Raycast (ray, out hit, Mathf.Infinity)) {
+			if(!convo.isConvo){
 				
-				
-				//If click on npc character with speach
-				if (hit.collider.tag == "NPC_CONVO") {
-					bConvo = true;
-					Debug.Log ("CONVO INIT " + hit.collider.name);
-					Debug.Log ("HIT: " + hit.collider.name.ToString ());
-					
-					selected_npc = hit.collider.gameObject;
-						//GameObject..Find (hit.collider.name.ToString ());
+				//If ray hits plane object
+				if (Physics.Raycast (ray, out hit, Mathf.Infinity)) {
 					
 					
-					
-					if (selected_npc != null) {
-						Debug.Log ("NPC FOUND");
+					//If click on npc character with speach
+					if (hit.collider.tag == "NPC_CONVO") {
+						bConvo = true;
+					//	Debug.Log ("CONVO INIT " + hit.collider.name);
+						//Debug.Log ("HIT: " + hit.collider.name.ToString ());
+						
+						selected_npc = hit.collider.gameObject;
+							//GameObject..Find (hit.collider.name.ToString ());
 						
 						
-						NPC_Interact npc = selected_npc.GetComponent<NPC_Interact>();
-						move_to = levelGrid.getTile(npc.current_x-1, npc.current_z).centre;
-						npc_name = npc.name;
-						Debug.Log("NPC NAME: " + npc.name);
-						//Debug.Log("MOVE TO: " + move_to.x.ToString() + ", " + move_to.z.ToString());
+						
+						if (selected_npc != null) {
+							//Debug.Log ("NPC FOUND");
+							
+							
+							NPC_Interact npc = selected_npc.GetComponent<NPC_Interact>();
+							move_to = levelGrid.getTile(npc.current_x-1, npc.current_z).centre;
+							npc_name = npc.name;
+							Debug.Log("NPC NAME: " + npc.name);
+							//Debug.Log("MOVE TO: " + move_to.x.ToString() + ", " + move_to.z.ToString());
+						
+							move(move_to);
+						
+							
+						}
+						
+	
+					} else {
 					
+					
+						move_to = new Vector3 (hit.point.x, 0, hit.point.z);
 						move(move_to);
-					
 						
 					}
-					
-
-				} else {
-				
-				
-					move_to = new Vector3 (hit.point.x, 0, hit.point.z);
-					move(move_to);
-					
+			
 				}
-		
+			
 			}
 		}
 	}
@@ -160,7 +166,7 @@ public class Player_Movement : MonoBehaviour
 					}
 					
 					//Check closest tile
-					Debug.Log ("Closest Tile: " + "[" + tempTile.x_pos + "," + tempTile.z_pos + "]");
+					//Debug.Log ("Closest Tile: " + "[" + tempTile.x_pos + "," + tempTile.z_pos + "]");
 					destination_tile = tempTile;
 				
 					//Calculate distance to target

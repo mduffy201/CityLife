@@ -171,6 +171,10 @@ public class XML_Parser  {
 		//Get statment id in
 		//int idIn = 1;
 		Response[] response_array = new Response[4];
+		response_array[0] = new Response();
+		response_array[1] = new Response();
+		response_array[2] = new Response();
+		response_array[3] = new Response();
 		int index = -1;
 		bool found = false;
 		

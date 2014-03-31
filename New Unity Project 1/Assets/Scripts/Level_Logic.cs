@@ -62,6 +62,7 @@ public class Level_Logic : MonoBehaviour {
 	}
 	public void SetCurrentStatment(int statementIdIn){
 		current_statement = current_npc.GetStatement(statementIdIn);
+			SetCurrentResponses();
 		//Debug.Log("CURRENT STATEMENT: " + current_statement.GetText());
 		
 	}

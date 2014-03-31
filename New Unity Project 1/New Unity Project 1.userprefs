@@ -1,13 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Conversation.cs">
-    <Files>
-      <File FileName="Assets\Scripts\Player_Movement.cs" Line="65" Column="27" />
-      <File FileName="Assets\Scripts\Conversation.cs" Line="194" Column="5" />
-      <File FileName="Assets\Scripts\NPC_Interact.cs" Line="8" Column="21" />
-      <File FileName="Assets\Scripts\Level_Logic.cs" Line="83" Column="16" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\Mark Duffy\Documents\New Unity Project 1\Assets\ground_tile.cs" line="4" />

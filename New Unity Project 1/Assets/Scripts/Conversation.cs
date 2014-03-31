@@ -33,6 +33,7 @@ public class Conversation : MonoBehaviour {
 	public string response3 = "3";
 	public string response4 = "4";
 	
+	public bool isConvo = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -83,14 +84,21 @@ public class Conversation : MonoBehaviour {
 	}
 	
 	public void initConversation(string npc_name){
-		
-		
+		isConvo = true;
+		level_logic.SetCurrentNPC(npc_name);
 		statement = level_logic.GetCurrentStatementText();
 	 	response1 = level_logic.GetResponse01();
 	 	response2 = level_logic.GetResponse02();
 	 	response3 = level_logic.GetResponse03();
 	 	response4 = level_logic.GetResponse04();
 		portrait = (Material)Resources.Load("NPC_Portraits/Materials/" + level_logic.GetCurrentPortrait());
+		
+		p_render.material = portrait;
+		tmStatement.text = statement;
+		tmRes1.text = response1;
+		tmRes2.text = response2;
+		tmRes3.text = response3;
+		tmRes4.text = response4;
 		
 	}
 	
@@ -111,12 +119,43 @@ public class Conversation : MonoBehaviour {
 				
 				
 				//Debug.Log("HIT: " + hit.collider.name.ToString());
+				if(hit.collider.name.ToString() == "Choice_01"){
+					
+					Debug.Log("OPTION 1 SELECTED");
+					level_logic.SetCurrentStatment(4);
+					refreshConvo();
+				}
+				if(hit.collider.name.ToString() == "Choice_02"){
+					
+					Debug.Log("OPTION 2 SELECTED");
+				}
+				if(hit.collider.name.ToString() == "Choice_03"){
+					
+					Debug.Log("OPTION 3 SELECTED");
+				}
+				if(hit.collider.name.ToString() == "Choice_04"){
+					
+					Debug.Log("OPTION 4 SELECTED");
+				}
 				
-				level_logic.SetNewStatement(hit.collider.name.ToString());
+				//level_logic.SetNewStatement(hit.collider.name.ToString());
 			}
 		}
+	}
+	public void refreshConvo(){
+		statement = level_logic.GetCurrentStatementText();
+	 	response1 = level_logic.GetResponse01();
+	 	response2 = level_logic.GetResponse02();
+	 	response3 = level_logic.GetResponse03();
+	 	response4 = level_logic.GetResponse04();
 		
-/*		
+		tmStatement.text = statement;
+		tmRes1.text = response1;
+		tmRes2.text = response2;
+		tmRes3.text = response3;
+		tmRes4.text = response4;
+	}
+	/*		
  * REFRESH
  * if(Input.GetKeyDown(KeyCode.Q)){
 			initConversation();
@@ -180,8 +219,6 @@ public class Conversation : MonoBehaviour {
 		/*if(Input.GetKeyDown(KeyCode.E)){
 			//Debug.Log("CONVERSATION CHECK " + level_logic.GetCurrentStatementText());
 		}*/
-
-	}
 	/*public void intiConvo(){
 		initConversation();
 			p_render.material = portrait;
