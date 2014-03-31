@@ -1,6 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player_Movement.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Spritesheet_Animation.cs" Line="95" Column="49" />
+      <File FileName="Assets\Scripts\Player_Movement.cs" Line="212" Column="18" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\Mark Duffy\Documents\New Unity Project 1\Assets\ground_tile.cs" line="4" />

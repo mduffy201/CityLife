@@ -191,14 +191,40 @@ public class Player_Movement : MonoBehaviour
 		isMoving = true;							
 		startPosition = current_tile.centre;			//Current tile position
 		float t = 0;
-		ssAnimation.StartRunRight();
+		//ssAnimation.StartSouth();
 		//for each vector3 in list move to centre
+		int m = 0;
 		foreach (Vector3 v in path) {
 			
 			//Debug.Log("MOVE LOOP_> " + v.ToString() );
 			t = 0;
 			startPosition = transform.position;
 			endPosition = v;  
+			
+			Debug.Log("MOVE_ " + m.ToString());
+			Debug.Log("Start - x: " + startPosition.x.ToString() + " z: " + startPosition.z.ToString());
+			Debug.Log("End - x: " + endPosition.x.ToString() + " z: " + endPosition.z.ToString());
+			m++;
+			
+			Debug.Log("CALC 1: " + (endPosition.x - startPosition.x).ToString());
+			Debug.Log("CALC 2: " + (endPosition.z - startPosition.z).ToString());
+			
+			//if 1, -1, 0.5, -0.5
+			if (Mathf.Abs(endPosition.x - startPosition.x) > Mathf.Abs(endPosition.z - startPosition.z))
+			{
+				//Move West
+				ssAnimation.StartWest();
+			}
+			else if (Mathf.Abs(endPosition.x - startPosition.x) < Mathf.Abs(endPosition.z - startPosition.z)){
+				//Move East
+				ssAnimation.StartEast();
+			}
+			/*else if (startPosition.z < endPosition.z){
+				
+			}
+			else if (startPosition.z > endPosition.z){
+				
+			}*/
 			
 			while (transform.position != endPosition) {                                 
 				t += Time.deltaTime * (moveSpeed / gridSize);

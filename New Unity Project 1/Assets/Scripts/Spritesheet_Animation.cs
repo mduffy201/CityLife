@@ -3,8 +3,10 @@ using System.Collections;
 
 public class Spritesheet_Animation : MonoBehaviour
 {
-	public Texture walkRight;
-	public Texture walkLeft;
+	public Texture walkEast;
+	public Texture walkNorth;
+	public Texture walkWest;
+	public Texture walkSouth;
 	//public Texture jumpRight;
 	//public Texture jumpLeft;
 	private int rows;
@@ -27,15 +29,15 @@ public class Spritesheet_Animation : MonoBehaviour
 		renderer.material.SetTextureOffset ("_MainTex", new Vector2 (1f, 1f));
 		renderer.material.SetTextureScale ("_MainTex", new Vector2 (1f / walkColumns, 1f / walkRows));
 		if (left) {
-			this.renderer.material.mainTexture = walkLeft;
+			this.renderer.material.mainTexture = walkNorth;
 		} else {
-			this.renderer.material.mainTexture = walkRight;
+			this.renderer.material.mainTexture = walkEast;
 		}
 	}
 
 
 	//=========================================RUN
-	public void StartRunRight ()
+	public void StartNorth ()
 	{
 		//if (!jump) {
 			columns = walkColumns;
@@ -44,14 +46,14 @@ public class Spritesheet_Animation : MonoBehaviour
 			right = true;
 			//jump = false;
 		
-			this.renderer.material.mainTexture = walkRight;
+			this.renderer.material.mainTexture = walkNorth;
 			run = true;
 			index = 0;
 			StartCoroutine (AnimateRun ());	
 		//}
 	}
 
-	public void StartRunLeft ()
+	public void StartEast ()
 	{
 		//if (!jump) {
 			columns = walkColumns;
@@ -60,7 +62,37 @@ public class Spritesheet_Animation : MonoBehaviour
 			left = true;
 			//jump = false;
 		
-			this.renderer.material.mainTexture = walkLeft;
+			this.renderer.material.mainTexture = walkEast;
+			run = true;
+			index = rows * columns;
+			StartCoroutine (AnimateRun ());	
+		//}
+	}
+	public void StartSouth ()
+	{
+		//if (!jump) {
+			columns = walkColumns;
+			rows = walkRows;
+			right = false;
+			left = true;
+			//jump = false;
+		
+			this.renderer.material.mainTexture = walkSouth;
+			run = true;
+			index = rows * columns;
+			StartCoroutine (AnimateRun ());	
+		//}
+	}
+	public void StartWest ()
+	{
+		//if (!jump) {
+			columns = walkColumns;
+			rows = walkRows;
+			right = false;
+			left = true;
+			//jump = false;
+		
+			this.renderer.material.mainTexture = walkWest;
 			run = true;
 			index = rows * columns;
 			StartCoroutine (AnimateRun ());	
