@@ -86,17 +86,17 @@ public class Level_Logic : MonoBehaviour {
 	public string GetCurrentPortrait(){
 		return current_npc.GetPortrait();
 	}
-	public string GetResponse01(){
-		return response01.GetText();
+	public Response GetResponse01(){
+		return response01;
 	}
-	public string GetResponse02(){
-		return response02.GetText();
+	public Response GetResponse02(){
+		return response02;
 	}
-	public string GetResponse03(){
-		return response03.GetText();
+	public Response GetResponse03(){
+		return response03;
 	}
-	public string GetResponse04(){
-		return response04.GetText();
+	public Response GetResponse04(){
+		return response04;
 	}
 	public void SetNewStatement(string responseIn){
 		string resNameIn = "Choice_01";

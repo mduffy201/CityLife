@@ -210,21 +210,24 @@ public class Player_Movement : MonoBehaviour
 			Debug.Log("CALC 2: " + (endPosition.z - startPosition.z).ToString());
 			
 			//if 1, -1, 0.5, -0.5
-			if (Mathf.Abs(endPosition.x - startPosition.x) > Mathf.Abs(endPosition.z - startPosition.z))
+			if ((endPosition.x - startPosition.x) == 1 &&  (endPosition.z - startPosition.z) == 0.5)
 			{
-				//Move West
-				ssAnimation.StartWest();
+				//Move North
+				ssAnimation.StartNorth();
 			}
-			else if (Mathf.Abs(endPosition.x - startPosition.x) < Mathf.Abs(endPosition.z - startPosition.z)){
+			else if ((endPosition.x - startPosition.x) == 1 &&  (endPosition.z - startPosition.z) == -0.5){
 				//Move East
 				ssAnimation.StartEast();
 			}
-			/*else if (startPosition.z < endPosition.z){
+			else if ((endPosition.x - startPosition.x) == -1 &&  (endPosition.z - startPosition.z) == -0.5){
+				//Move South
+				ssAnimation.StartSouth();
+			}
+			else if ((endPosition.x - startPosition.x) == -1 &&  (endPosition.z - startPosition.z) == 0.5){
+				//Move West
+				ssAnimation.StartWest();
 				
 			}
-			else if (startPosition.z > endPosition.z){
-				
-			}*/
 			
 			while (transform.position != endPosition) {                                 
 				t += Time.deltaTime * (moveSpeed / gridSize);

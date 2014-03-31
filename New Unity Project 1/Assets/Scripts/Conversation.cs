@@ -28,10 +28,16 @@ public class Conversation : MonoBehaviour {
 	private TextMesh tmRes4;
 	
 	public string statement = "S";
+	/*public Response res1;
 	public string response1 = "1";
 	public string response2 = "2";
 	public string response3 = "3";
-	public string response4 = "4";
+	public string response4 = "4";*/
+	
+	public Response response1;
+	public Response response2;
+	public Response response3;
+	public Response response4;
 	
 	public bool isConvo = false;
 	// Use this for initialization
@@ -87,7 +93,10 @@ public class Conversation : MonoBehaviour {
 		isConvo = true;
 		level_logic.SetCurrentNPC(npc_name);
 		statement = level_logic.GetCurrentStatementText();
-	 	response1 = level_logic.GetResponse01();
+		
+		//res1 = level_logic.GetResponse01();
+	 	
+		response1 = level_logic.GetResponse01();
 	 	response2 = level_logic.GetResponse02();
 	 	response3 = level_logic.GetResponse03();
 	 	response4 = level_logic.GetResponse04();
@@ -95,10 +104,12 @@ public class Conversation : MonoBehaviour {
 		
 		p_render.material = portrait;
 		tmStatement.text = statement;
-		tmRes1.text = response1;
-		tmRes2.text = response2;
-		tmRes3.text = response3;
-		tmRes4.text = response4;
+		
+		//tmRes1.text = res1.GetText();
+		tmRes1.text = response1.GetText();
+		tmRes2.text = response2.GetText();
+		tmRes3.text = response3.GetText();
+		tmRes4.text = response4.GetText();
 		
 	}
 	
@@ -122,20 +133,28 @@ public class Conversation : MonoBehaviour {
 				if(hit.collider.name.ToString() == "Choice_01"){
 					
 					Debug.Log("OPTION 1 SELECTED");
-					level_logic.SetCurrentStatment(4);
+					level_logic.SetCurrentStatment(response1.GetNextStatement());
 					refreshConvo();
+					
+					//level_logic.SetCurrentStatment(4);
 				}
 				if(hit.collider.name.ToString() == "Choice_02"){
 					
 					Debug.Log("OPTION 2 SELECTED");
+					level_logic.SetCurrentStatment(response2.GetNextStatement());
+					refreshConvo();
 				}
 				if(hit.collider.name.ToString() == "Choice_03"){
 					
 					Debug.Log("OPTION 3 SELECTED");
+					level_logic.SetCurrentStatment(response3.GetNextStatement());
+					refreshConvo();
 				}
 				if(hit.collider.name.ToString() == "Choice_04"){
 					
 					Debug.Log("OPTION 4 SELECTED");
+					level_logic.SetCurrentStatment(response4.GetNextStatement());
+					refreshConvo();
 				}
 				
 				//level_logic.SetNewStatement(hit.collider.name.ToString());
@@ -150,10 +169,10 @@ public class Conversation : MonoBehaviour {
 	 	response4 = level_logic.GetResponse04();
 		
 		tmStatement.text = statement;
-		tmRes1.text = response1;
-		tmRes2.text = response2;
-		tmRes3.text = response3;
-		tmRes4.text = response4;
+		tmRes1.text = response1.GetText();
+		tmRes2.text = response2.GetText();
+		tmRes3.text = response3.GetText();
+		tmRes4.text = response4.GetText();
 	}
 	/*		
  * REFRESH
