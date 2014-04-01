@@ -20,7 +20,7 @@ public class Conversation : MonoBehaviour {
 	private GUIText txtRes3;
 	private GUIText txtRes4;*/
 	
-	
+	private Player_Movement p_m;
 	private TextMesh tmStatement;
 	private TextMesh tmRes1;
 	private TextMesh tmRes2;
@@ -87,6 +87,10 @@ public class Conversation : MonoBehaviour {
 		p_render = (Renderer)npc_p.GetComponent(typeof(Renderer));
 		portrait = (Material)Resources.Load("NPC_Portraits/Materials/horse");
 		p_render.material = null;
+		
+		p_m = GameObject.Find("Player").GetComponent<Player_Movement>();
+		if(p_m != null)
+			Debug.Log("Conversation has found player");
 	}
 	
 	public void initConversation(string npc_name){
@@ -133,28 +137,56 @@ public class Conversation : MonoBehaviour {
 				if(hit.collider.name.ToString() == "Choice_01"){
 					
 					Debug.Log("OPTION 1 SELECTED");
-					level_logic.SetCurrentStatment(response1.GetNextStatement());
-					refreshConvo();
 					
+					if(response1.GetNextStatement() == 0){
+						
+						p_m.switchConvo();
+						
+					}
+					else{
+						level_logic.SetCurrentStatment(response1.GetNextStatement());
+						refreshConvo();
+					}
 					//level_logic.SetCurrentStatment(4);
 				}
 				if(hit.collider.name.ToString() == "Choice_02"){
 					
 					Debug.Log("OPTION 2 SELECTED");
-					level_logic.SetCurrentStatment(response2.GetNextStatement());
-					refreshConvo();
+					if(response1.GetNextStatement() == 0){
+						
+						p_m.switchConvo();
+						
+					}
+					else{
+						level_logic.SetCurrentStatment(response2.GetNextStatement());
+						refreshConvo();
+					}
 				}
 				if(hit.collider.name.ToString() == "Choice_03"){
 					
 					Debug.Log("OPTION 3 SELECTED");
-					level_logic.SetCurrentStatment(response3.GetNextStatement());
-					refreshConvo();
+					if(response1.GetNextStatement() == 0){
+						
+						p_m.switchConvo();
+						
+					}
+					else{
+						level_logic.SetCurrentStatment(response3.GetNextStatement());
+						refreshConvo();
+					}
 				}
 				if(hit.collider.name.ToString() == "Choice_04"){
 					
 					Debug.Log("OPTION 4 SELECTED");
-					level_logic.SetCurrentStatment(response4.GetNextStatement());
-					refreshConvo();
+					if(response1.GetNextStatement() == 0){
+						
+						p_m.switchConvo();
+						
+					}
+					else{
+						level_logic.SetCurrentStatment(response4.GetNextStatement());
+						refreshConvo();
+					}
 				}
 				
 				//level_logic.SetNewStatement(hit.collider.name.ToString());

@@ -2,83 +2,148 @@
 <Response xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<choices>
 		<Response_ID>1</Response_ID>
-		<Text>I found your wallet, here you go.</Text>
+		<Text>Are you sure you didn't lose it outside </Text>
 		<AudioFile>raudio1</AudioFile>
-		<Symbol>@</Symbol>
-		<NextStatement>4</NextStatement>
-	</choices>
-	<choices>
-		<Response_ID>1</Response_ID>
-		<Text>Sorry, I haven't seen your wallet.</Text>
-		<AudioFile>raudio2</AudioFile>
-		<Symbol>@</Symbol>
-		<NextStatement>5</NextStatement>
-	</choices>
-	<choices>
-		<Response_ID>1</Response_ID>
-		<Text>I think I saw someone pick it up by the freezer.</Text>
-		<AudioFile>raudio3</AudioFile>
-		<Symbol>@</Symbol>
-		<NextStatement>6</NextStatement>
-	</choices>
-	<choices>
-		<Response_ID>1</Response_ID>
-		<Text>I've only just walked in the door, I've not seen your wallet</Text>
-		<AudioFile>raudio4</AudioFile>
-		<Symbol>@</Symbol>
-		<NextStatement>5</NextStatement>
-	</choices>
-	<choices>
-		<Response_ID>2</Response_ID>
-		<Text>Are you sure you didn't lose it outside?</Text>
-		<AudioFile>raudio5</AudioFile>
 		<Symbol>@</Symbol>
 		<NextStatement>2</NextStatement>
 	</choices>
 	<choices>
-		<Response_ID>2</Response_ID>
-		<Text>What does it look like?</Text>
-		<AudioFile>raudio6</AudioFile>
+		<Response_ID>1</Response_ID>
+		<Text>What does it look like? </Text>
+		<AudioFile>raudio2</AudioFile>
 		<Symbol>@</Symbol>
 		<NextStatement>3</NextStatement>
 	</choices>
 	<choices>
+		<Response_ID>1</Response_ID>
+		<Text>I've only just walked in the door, I've not seen your wallet </Text>
+		<AudioFile>raudio3</AudioFile>
+		<Symbol>@</Symbol>
+		<NextStatement>5</NextStatement>
+	</choices>
+	<choices>
+		<Response_ID>1</Response_ID>
+		<Text>Here, I found your wallet  [end]</Text>
+		<AudioFile>raudio4</AudioFile>
+		<Symbol>@</Symbol>
+		<NextStatement>4</NextStatement>
+	</choices>
+	<choices>
 		<Response_ID>2</Response_ID>
-		<Text>Actually, I do have your wallet. </Text>
+		<Text>What does it look like? </Text>
+		<AudioFile>raudio5</AudioFile>
+		<Symbol>@</Symbol>
+		<NextStatement>8</NextStatement>
+	</choices>
+	<choices>
+		<Response_ID>2</Response_ID>
+		<Text>Sorry I've not seen your wallet </Text>
+		<AudioFile>raudio6</AudioFile>
+		<Symbol>@</Symbol>
+		<NextStatement>6</NextStatement>
+	</choices>
+	<choices>
+		<Response_ID>2</Response_ID>
+		<Text>I do have your wallet.  </Text>
 		<AudioFile>raudio7</AudioFile>
 		<Symbol>@</Symbol>
 		<NextStatement>7</NextStatement>
 	</choices>
 	<choices>
 		<Response_ID>2</Response_ID>
-		<Text>I didn't steal anything from it.</Text>
+		<Text>…. [end]</Text>
 		<AudioFile>raudio8</AudioFile>
 		<Symbol>@</Symbol>
-		<NextStatement>10</NextStatement>
+		<NextStatement>0</NextStatement>
 	</choices>
 	<choices>
-		<Response_ID>8</Response_ID>
-		<Text>Sorry.</Text>
+		<Response_ID>3</Response_ID>
+		<Text>Are you sure you didn't lose it outside </Text>
+		<NextStatement>2</NextStatement>
+	</choices>
+	<choices>
+		<Response_ID>3</Response_ID>
+		<Text>What does it look like? </Text>
+		<NextStatement>3</NextStatement>
+	</choices>
+	<choices>
+		<Response_ID>3</Response_ID>
+		<Text>I've only just walked in the door, I've not seen your wallet (</Text>
+		<NextStatement>5</NextStatement>
+	</choices>
+	<choices>
+		<Response_ID>3</Response_ID>
+		<Text>Here, I found your wallet  [end]</Text>
 		<NextStatement>0</NextStatement>
 	</choices>
 	<choices>
 		<Response_ID>4</Response_ID>
-		<Text>Glad I was able to help</Text>
+		<Text>[end]</Text>
+		<NextStatement>0</NextStatement>
+	</choices>
+	<choices>
+		<Response_ID>4</Response_ID>
+	</choices>
+	<choices>
+		<Response_ID>4</Response_ID>
+	</choices>
+	<choices>
+		<Response_ID>4</Response_ID>
+	</choices>
+	<choices>
+		<Response_ID>5</Response_ID>
+		<Text>[end]</Text>
 		<NextStatement>0</NextStatement>
 	</choices>
 	<choices>
 		<Response_ID>5</Response_ID>
-		<Text>It was that guy there!</Text>
+	</choices>
+	<choices>
+		<Response_ID>5</Response_ID>
+	</choices>
+	<choices>
+		<Response_ID>5</Response_ID>
+	</choices>
+	<choices>
+		<Response_ID>6</Response_ID>
+		<Text>[end]</Text>
 		<NextStatement>0</NextStatement>
 	</choices>
 	<choices>
 		<Response_ID>6</Response_ID>
-		<Text>I didn't steal it, I found it!</Text>
+	</choices>
+	<choices>
+		<Response_ID>6</Response_ID>
+	</choices>
+	<choices>
+		<Response_ID>6</Response_ID>
+	</choices>
+	<choices>
+		<Response_ID>7</Response_ID>
+		<Text>[end]</Text>
 		<NextStatement>0</NextStatement>
 	</choices>
 	<choices>
 		<Response_ID>7</Response_ID>
-		<Text>Why should I give it to you?</Text>
+	</choices>
+	<choices>
+		<Response_ID>7</Response_ID>
+	</choices>
+	<choices>
+		<Response_ID>7</Response_ID>
+	</choices>
+	<choices>
+		<Response_ID>8</Response_ID>
+		<Text>I'll see if I can find it for you. [end]</Text>
 		<NextStatement>0</NextStatement>
+	</choices>
+	<choices>
+		<Response_ID>8</Response_ID>
+	</choices>
+	<choices>
+		<Response_ID>8</Response_ID>
+	</choices>
+	<choices>
+		<Response_ID>8</Response_ID>
 	</choices>
 </Response>
