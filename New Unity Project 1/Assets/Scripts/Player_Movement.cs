@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Player_Movement : MonoBehaviour
 {
+	public LayerMask convo_layer;
+	
 	Spritesheet_Animation ssAnimation;
 	bool bConvo = false;
 	//GameObject ssAnimation;
@@ -50,44 +52,9 @@ public class Player_Movement : MonoBehaviour
 		ssAnimation = gameObject.GetComponent<Spritesheet_Animation>();
 		ssAnimation.still();
 	}
-	public void switchConvo(){
-			if (conversation_component.active) {
-				conversation_component.active = false;
-				
-				foreach (Renderer r in c_renderer) {		
-					r.enabled = false;
-				}
-			} else {
-				conversation_component.active = true;
-				
-				foreach (Renderer r in c_renderer) {		
-					r.enabled = true;
-				}
-				
-				convo.initConversation(npc_name);
-			}
-		
-	}
+
 	void Update ()
 	{
-		
-		
-	/*	if (Input.GetKeyDown (KeyCode.E)) {
-		
-			if (conversation_component.active) {
-				conversation_component.active = false;
-				
-				foreach (Renderer r in c_renderer) {		
-					r.enabled = false;
-				}
-			} else {
-				conversation_component.active = true;
-				
-				foreach (Renderer r in c_renderer) {		
-					r.enabled = true;
-				}
-			}
-		}*/
 		
 
 		if (Input.GetMouseButtonDown (0)) {
@@ -98,11 +65,21 @@ public class Player_Movement : MonoBehaviour
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 			
+				/*if (Physics.Raycast (ray, out hit, Mathf.Infinity, convo_layer)){
+					Debug.Log("Conversation Hit");	
+				if(hit.collider.tag == "NPC_CONVO"){	
+						Debug.Log("Conversation Hit");
+					}
+				}*/
+			
 			if(!convo.isConvo){
 				
 				//If ray hits plane object
-				if (Physics.Raycast (ray, out hit, Mathf.Infinity)) {
+				if (Physics.Raycast (ray, out hit, Mathf.Infinity, convo_layer)) {
 					
+					/*if(hit.collider.tag == "NPC_CONVO"){	
+						Debug.Log("Conversation Hit");
+					}*/
 					
 					//If click on npc character with speach
 					if (hit.collider.tag == "NPC_CONVO") {
@@ -144,7 +121,24 @@ public class Player_Movement : MonoBehaviour
 			}
 		}
 	}
-	
+		public void switchConvo(){
+			if (conversation_component.active) {
+				conversation_component.active = false;
+				
+				foreach (Renderer r in c_renderer) {		
+					r.enabled = false;
+				}
+			} else {
+				conversation_component.active = true;
+				
+				foreach (Renderer r in c_renderer) {		
+					r.enabled = true;
+				}
+				
+				convo.initConversation(npc_name);
+			}
+		
+	}
 	public void move (Vector3 move_to)
 	{
 			//Create temp tile
