@@ -39,7 +39,10 @@ public class Conversation : MonoBehaviour {
 	public Response response3;
 	public Response response4;
 	
+	Inventory player_inventory;
 	public bool isConvo = false;
+	public bool bItem = false;
+	string sItem = "Wallet";
 	// Use this for initialization
 	void Start () {
 		
@@ -91,29 +94,44 @@ public class Conversation : MonoBehaviour {
 		p_m = GameObject.Find("Player").GetComponent<Player_Movement>();
 		if(p_m != null)
 			Debug.Log("Conversation has found player");
+		
+		player_inventory = GameObject.Find("Player").GetComponent<Inventory>();
+		if(player_inventory != null)
+			Debug.Log("Conversation has found player inventory");
 	}
 	
 	public void initConversation(string npc_name){
+		Debug.Log("CONVO INIT");
+		//Check for item
+		bItem = player_inventory.checkItem(sItem);
 		isConvo = true;
 		level_logic.SetCurrentNPC(npc_name);
-		statement = level_logic.GetCurrentStatementText();
 		
-		//res1 = level_logic.GetResponse01();
+		portrait = (Material)Resources.Load("NPC_Portraits/Materials/" + level_logic.GetCurrentPortrait());
+		p_render.material = portrait;
+		
+		refreshConvo();
+		/*statement = level_logic.GetCurrentStatementText();
 	 	
 		response1 = level_logic.GetResponse01();
 	 	response2 = level_logic.GetResponse02();
 	 	response3 = level_logic.GetResponse03();
 	 	response4 = level_logic.GetResponse04();
-		portrait = (Material)Resources.Load("NPC_Portraits/Materials/" + level_logic.GetCurrentPortrait());
 		
-		p_render.material = portrait;
+		
 		tmStatement.text = statement;
+		
+		tmRes3.renderer.material.color = Color.white;
+		tmRes4.renderer.material.color = Color.white;
 		
 		//tmRes1.text = res1.GetText();
 		tmRes1.text = response1.GetText();
+		//tmRes1.renderer.material.color = Color.gray;
 		tmRes2.text = response2.GetText();
 		tmRes3.text = response3.GetText();
 		tmRes4.text = response4.GetText();
+		*/
+		
 		
 	}
 	
@@ -139,7 +157,7 @@ public class Conversation : MonoBehaviour {
 					Debug.Log("OPTION 1 SELECTED");
 					
 					if(response1.GetNextStatement() == 0){
-						
+						isConvo = false;
 						p_m.switchConvo();
 						
 					}
@@ -153,7 +171,7 @@ public class Conversation : MonoBehaviour {
 					
 					Debug.Log("OPTION 2 SELECTED");
 					if(response1.GetNextStatement() == 0){
-						
+						isConvo = false;
 						p_m.switchConvo();
 						
 					}
@@ -163,10 +181,14 @@ public class Conversation : MonoBehaviour {
 					}
 				}
 				if(hit.collider.name.ToString() == "Choice_03"){
-					
+					string sItem = "Wallet";
+					if(level_logic.GetCurrentStatementNumber() == 2 && !bItem){
+						
+						
+					}else{
 					Debug.Log("OPTION 3 SELECTED");
 					if(response1.GetNextStatement() == 0){
-						
+						isConvo = false;
 						p_m.switchConvo();
 						
 					}
@@ -175,17 +197,22 @@ public class Conversation : MonoBehaviour {
 						refreshConvo();
 					}
 				}
+				}
 				if(hit.collider.name.ToString() == "Choice_04"){
-					
-					Debug.Log("OPTION 4 SELECTED");
-					if(response1.GetNextStatement() == 0){
+					if(level_logic.GetCurrentStatementNumber() == 1 && !bItem || level_logic.GetCurrentStatementNumber() == 4 && !bItem){
 						
-						p_m.switchConvo();
 						
-					}
-					else{
-						level_logic.SetCurrentStatment(response4.GetNextStatement());
-						refreshConvo();
+					}else{
+						Debug.Log("OPTION 4 SELECTED");
+						if(response1.GetNextStatement() == 0){
+							isConvo = false;
+							p_m.switchConvo();
+						
+						}
+						else{
+							level_logic.SetCurrentStatment(response4.GetNextStatement());
+							refreshConvo();
+						}
 					}
 				}
 				
@@ -200,11 +227,27 @@ public class Conversation : MonoBehaviour {
 	 	response3 = level_logic.GetResponse03();
 	 	response4 = level_logic.GetResponse04();
 		
+		tmRes3.renderer.material.color = Color.white;
+		tmRes4.renderer.material.color = Color.white;
+		
 		tmStatement.text = statement;
 		tmRes1.text = response1.GetText();
 		tmRes2.text = response2.GetText();
-		tmRes3.text = response3.GetText();
+		string r3 = response3.GetText();
+		r3 = r3.Replace(",", "," + System.Environment.NewLine);
+		tmRes3.text = r3;
+		//tmRes3.text = response3.GetText();
 		tmRes4.text = response4.GetText();
+		
+		//Change color off item tagged responses
+		if(!bItem){
+			if(level_logic.GetCurrentStatementNumber() == 2){
+				tmRes3.renderer.material.color = Color.gray;
+			} 
+			if(level_logic.GetCurrentStatementNumber() == 1  || level_logic.GetCurrentStatementNumber() == 4 ){
+				tmRes4.renderer.material.color = Color.gray;
+			}
+		}
 	}
 	/*		
  * REFRESH

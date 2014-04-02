@@ -40,4 +40,12 @@ public class Inventory : MonoBehaviour {
 		inventory.Remove(name);
 
 	}
+	public bool checkItem(string item){
+		if(inventory.Contains(item)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }

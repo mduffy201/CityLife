@@ -83,6 +83,9 @@ public class Level_Logic : MonoBehaviour {
 	public string GetCurrentStatementText(){
 		return current_statement.GetText();
 	}
+	public int GetCurrentStatementNumber(){
+		return current_statement.GetStatementId();
+	}
 	public string GetCurrentPortrait(){
 		return current_npc.GetPortrait();
 	}

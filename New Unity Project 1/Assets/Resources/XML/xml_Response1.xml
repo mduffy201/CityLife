@@ -68,7 +68,7 @@
 	</choices>
 	<choices>
 		<Response_ID>3</Response_ID>
-		<Text>I've only just walked in the door, I've not seen your wallet (</Text>
+		<Text>I've only just walked in the door, I've not seen your wallet </Text>
 		<NextStatement>5</NextStatement>
 	</choices>
 	<choices>

@@ -14,7 +14,7 @@ public class Player_Movement : MonoBehaviour
 	private float moveSpeed = 3f;
 	private float gridSize = 1f;
 	public Vector2 input;
-	private bool isMoving = false;
+	public bool isMoving = false;
 	bool isConvo = false;
 	
 	//public float character_offset = 0.0f;
@@ -58,13 +58,14 @@ public class Player_Movement : MonoBehaviour
 		
 
 		if (Input.GetMouseButtonDown (0)) {
-	
-			//	Debug.Log("=========================================NEW MOVE!!!================================");
-			//Debug.Log ("Current Tile: " + "[" + current_tile.x_pos + "," + current_tile.z_pos +"] " + "C " + current_tile.centre.ToString());
-			//Cast ray from camera to mouse pointer
-			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-			RaycastHit hit;
-			
+			if(!isMoving){
+				//	Debug.Log("=========================================NEW MOVE!!!================================");
+				//Debug.Log ("Current Tile: " + "[" + current_tile.x_pos + "," + current_tile.z_pos +"] " + "C " + current_tile.centre.ToString());
+				//Cast ray from camera to mouse pointer
+				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+				RaycastHit hit;
+				//	selected_npc = null;
+				bConvo = false;
 				/*if (Physics.Raycast (ray, out hit, Mathf.Infinity, convo_layer)){
 					Debug.Log("Conversation Hit");	
 				if(hit.collider.tag == "NPC_CONVO"){	
@@ -72,56 +73,57 @@ public class Player_Movement : MonoBehaviour
 					}
 				}*/
 			
-			if(!convo.isConvo){
+				if(!convo.isConvo){
 				
-				//If ray hits plane object
-				if (Physics.Raycast (ray, out hit, Mathf.Infinity, convo_layer)) {
+					//If ray hits plane object
+					if (Physics.Raycast (ray, out hit, Mathf.Infinity, convo_layer)) {
 					
 					/*if(hit.collider.tag == "NPC_CONVO"){	
 						Debug.Log("Conversation Hit");
 					}*/
 					
 					//If click on npc character with speach
-					if (hit.collider.tag == "NPC_CONVO") {
-						bConvo = true;
-					//	Debug.Log ("CONVO INIT " + hit.collider.name);
-						//Debug.Log ("HIT: " + hit.collider.name.ToString ());
+						if (hit.collider.tag == "NPC_CONVO") {
+							bConvo = true;
+							//	Debug.Log ("CONVO INIT " + hit.collider.name);
+							//Debug.Log ("HIT: " + hit.collider.name.ToString ());
 						
-						selected_npc = hit.collider.gameObject;
+							selected_npc = hit.collider.gameObject;
 							//GameObject..Find (hit.collider.name.ToString ());
 						
 						
 						
-						if (selected_npc != null) {
-							//Debug.Log ("NPC FOUND");
+							if (selected_npc != null) {
+								//Debug.Log ("NPC FOUND");
 							
 							
-							NPC_Interact npc = selected_npc.GetComponent<NPC_Interact>();
-							move_to = levelGrid.getTile(npc.current_x-1, npc.current_z).centre;
-							npc_name = npc.name;
-							Debug.Log("NPC NAME: " + npc.name);
-							//Debug.Log("MOVE TO: " + move_to.x.ToString() + ", " + move_to.z.ToString());
+								NPC_Interact npc = selected_npc.GetComponent<NPC_Interact>();
+								move_to = levelGrid.getTile(npc.current_x-1, npc.current_z).centre;
+								npc_name = npc.name;
+								Debug.Log("NPC NAME: " + npc.name);
+								//Debug.Log("MOVE TO: " + move_to.x.ToString() + ", " + move_to.z.ToString());
 						
-							move(move_to);
+								move(move_to);
 						
 							
-						}
+							}
 						
 	
-					} else {
+						} else {
 					
 					
-						move_to = new Vector3 (hit.point.x, 0, hit.point.z);
-						move(move_to);
+							move_to = new Vector3 (hit.point.x, 0, hit.point.z);
+							move(move_to);
 						
+						}
+			
 					}
 			
 				}
-			
 			}
 		}
 	}
-		public void switchConvo(){
+	public void switchConvo(){
 			if (conversation_component.active) {
 				conversation_component.active = false;
 				
@@ -235,6 +237,7 @@ public class Player_Movement : MonoBehaviour
 			switchConvo();
 		
 		isMoving = false;
+		ssAnimation.still();
 		yield return 0;
 	}
 
